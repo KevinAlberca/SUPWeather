@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		2D541E700F5A58B1222155D0 /* Pods_SUPWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B621A257F4E19A7FE5C38B5E /* Pods_SUPWeather.framework */; };
 		DE4CD5FC1DCDCB3800052F81 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CD5FB1DCDCB3800052F81 /* RequestManager.swift */; };
+		DE4CD5FE1DCDCC9800052F81 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CD5FD1DCDCC9800052F81 /* RootViewController.swift */; };
+		DE4CD6031DCDD77C00052F81 /* RootWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CD6021DCDD77C00052F81 /* RootWeatherCell.swift */; };
 		DE9E3F551DCB360400A1B370 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E3F541DCB360400A1B370 /* AppDelegate.swift */; };
 		DE9E3F5A1DCB360400A1B370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9E3F581DCB360400A1B370 /* Main.storyboard */; };
 		DE9E3F5C1DCB360500A1B370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9E3F5B1DCB360500A1B370 /* Assets.xcassets */; };
 		DE9E3F5F1DCB360500A1B370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE9E3F5D1DCB360500A1B370 /* LaunchScreen.storyboard */; };
-		DE9E3F681DCB38EC00A1B370 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E3F671DCB38EC00A1B370 /* RootViewController.swift */; };
-		DE9E3F6B1DCB3A8B00A1B370 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E3F6A1DCB3A8B00A1B370 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,14 +22,14 @@
 		BF799AA1D87EA1AB94FC8CCF /* Pods-SUPWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUPWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SUPWeather/Pods-SUPWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		C011D99ADAB461B9DA66397E /* Pods-SUPWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUPWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-SUPWeather/Pods-SUPWeather.release.xcconfig"; sourceTree = "<group>"; };
 		DE4CD5FB1DCDCB3800052F81 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		DE4CD5FD1DCDCC9800052F81 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		DE4CD6021DCDD77C00052F81 /* RootWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWeatherCell.swift; sourceTree = "<group>"; };
 		DE9E3F511DCB360400A1B370 /* SUPWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUPWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9E3F541DCB360400A1B370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9E3F591DCB360400A1B370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE9E3F5B1DCB360500A1B370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE9E3F5E1DCB360500A1B370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE9E3F601DCB360500A1B370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE9E3F671DCB38EC00A1B370 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		DE9E3F6A1DCB3A8B00A1B370 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +69,14 @@
 			name = Manager;
 			sourceTree = "<group>";
 		};
+		DE4CD6011DCDD76A00052F81 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DE4CD6021DCDD77C00052F81 /* RootWeatherCell.swift */,
+			);
+			name = Details;
+			sourceTree = "<group>";
+		};
 		DE9E3F481DCB360400A1B370 = {
 			isa = PBXGroup;
 			children = (
@@ -93,7 +101,6 @@
 				DE4CD5FA1DCDCB2000052F81 /* Manager */,
 				DE9E3F661DCB38DD00A1B370 /* Scene */,
 				DE9E3F541DCB360400A1B370 /* AppDelegate.swift */,
-				DE9E3F6A1DCB3A8B00A1B370 /* ViewController.swift */,
 				DE9E3F581DCB360400A1B370 /* Main.storyboard */,
 				DE9E3F5B1DCB360500A1B370 /* Assets.xcassets */,
 				DE9E3F5D1DCB360500A1B370 /* LaunchScreen.storyboard */,
@@ -105,7 +112,8 @@
 		DE9E3F661DCB38DD00A1B370 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				DE9E3F671DCB38EC00A1B370 /* RootViewController.swift */,
+				DE4CD6011DCDD76A00052F81 /* Details */,
+				DE4CD5FD1DCDCC9800052F81 /* RootViewController.swift */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -234,10 +242,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE9E3F6B1DCB3A8B00A1B370 /* ViewController.swift in Sources */,
 				DE9E3F551DCB360400A1B370 /* AppDelegate.swift in Sources */,
-				DE9E3F681DCB38EC00A1B370 /* RootViewController.swift in Sources */,
+				DE4CD5FE1DCDCC9800052F81 /* RootViewController.swift in Sources */,
 				DE4CD5FC1DCDCB3800052F81 /* RequestManager.swift in Sources */,
+				DE4CD6031DCDD77C00052F81 /* RootWeatherCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -347,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
