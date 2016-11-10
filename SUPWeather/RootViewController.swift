@@ -5,7 +5,6 @@
 //  Created by Kevin Alberca on 05/11/2016.
 //  Copyright © 2016 Kevin Alberca. All rights reserved.
 //
-
 import UIKit
 
 class RootViewController: UITableViewController {
@@ -21,7 +20,7 @@ class RootViewController: UITableViewController {
 		}){ (error) in
 			print("Error => \(error)")
 		}
-
+		
 		
 	}
 	
@@ -45,17 +44,18 @@ class RootViewController: UITableViewController {
 			return UITableViewCell()
 		}
 		
-		guard let objWeather = self.resultWeather?[indexPath.row],
-			let summary = objWeather["summary"] as? String,
-			let time = objWeather["time"] as? Int else {
+		
+		guard let data = self.resultWeather?[indexPath.row],
+			let main = data["main"] as? Dictionary<String, Any>,
+			let weather = data["weather"] as? Array<Dictionary<String, Any>>,
+			let clouds = data["clouds"] as? Dictionary<String, Any>,
+			let wind = data["wind"] as? Dictionary<String, Any>,
+			let rain = data["rain"] as? Dictionary<String, Any> else {
+				print("ERROR Guard : The type of let arn't available")
 				return cell
 		}
 		
-		cell.titleLabel.text = "\(time)"
-		cell.contentLabel.text = summary
-		
 		return cell
 	}
-
+	
 }
-
