@@ -60,7 +60,6 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="yc3-TV-gcL" id="DSO-nr-tfQ"/>
                             <outlet property="delegate" destination="yc3-TV-gcL" id="0p5-Er-cgL"/>
                         </connections>
                     </tableView>
