@@ -50,7 +50,4 @@ class RequestManager {
 			success(data)
 		}
 	}
-	
-	
-	
 }

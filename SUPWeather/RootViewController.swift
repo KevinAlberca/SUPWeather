@@ -50,10 +50,31 @@ class RootViewController: UITableViewController {
 			let weather = data["weather"] as? Array<Dictionary<String, Any>>,
 			let clouds = data["clouds"] as? Dictionary<String, Any>,
 			let wind = data["wind"] as? Dictionary<String, Any>,
-			let rain = data["rain"] as? Dictionary<String, Any> else {
+			let rain = data["rain"] as? Dictionary<String, Any>,
+			let time = data["dt"] as? Double else {
 				print("ERROR Guard : The type of let arn't available")
 				return cell
 		}
+		
+		
+//		print("Data \(data)")
+//		print("Main \(main)")
+//		print("Weather \(weather[0]["description"])")
+//		print("Clouds : \(clouds)")
+//		print("Wind : \(wind["deg"]!)")
+//		print("Rain : \(rain)")
+		
+
+		let date = Date(timeIntervalSince1970: time)
+	
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "fr_FR")
+		formatter.dateFormat = "EEEE d MMM"
+		let strDateFormatted = formatter.string(from: date)
+		
+		cell.titleLabel.text = "City of User"
+		cell.contentLabel.text = "\(weather[0]["description"]!)"
+		cell.updateTimeLabel.text = "\(strDateFormatted)"
 		
 		return cell
 	}
