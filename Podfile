@@ -6,4 +6,5 @@ target 'SUPWeather' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   # Pods for SUPWeather
   pod 'Alamofire', '~> 4.0'
+  pod 'AlamofireImage', '~> 3.0'
 end
