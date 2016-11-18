@@ -8,10 +8,18 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
 
 class RootTableDataSource: NSObject, UITableViewDataSource {
 	
 	var resultWeather: WeatherArray?
+	
+	lazy var dateFormatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "fr_FR")
+		formatter.dateFormat = "EEEE d MMM"
+		return formatter
+	}()
 	
 	
 	// Fetch New Weather
@@ -38,38 +46,45 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 			return UITableViewCell()
 		}
 		
-		
-		guard let data = self.resultWeather?[indexPath.row],
-			let main = data["main"] as? Dictionary<String, Any>,
-			let weather = data["weather"] as? Array<Dictionary<String, Any>>,
-			let clouds = data["clouds"] as? Dictionary<String, Any>,
-			let wind = data["wind"] as? Dictionary<String, Any>,
-			let rain = data["rain"] as? Dictionary<String, Any>,
-			let time = data["dt"] as? Double else {
-				print("ERROR Guard : The type of let arn't available")
-				return cell
+		guard let data = self.resultWeather?[indexPath.row] else {
+			return cell
 		}
 		
+		self.configure(tableViewCell: cell, withObjectWeather: data)
+		return cell
+	}
+	
+	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: [String: Any]) {
+		guard let main = obj["main"] as? Dictionary<String, Any>,
+			let weather = obj["weather"] as? Array<Dictionary<String, Any>>,
+			let clouds = obj["clouds"] as? Dictionary<String, Any>,
+			let wind = obj["wind"] as? Dictionary<String, Any>,
+			let rain = obj["rain"] as? Dictionary<String, Any>,
+			let time = obj["dt"] as? Double else {
+				print("ERROR Guard : The type of let arn't available")
+				return
+		}
 		
-		//		print("Data \(data)")
-		//		print("Main \(main)")
-		//		print("Weather \(weather[0]["description"])")
-		//		print("Clouds : \(clouds)")
-		//		print("Wind : \(wind["deg"]!)")
-		//		print("Rain : \(rain)")
-		
+		print("Data \(obj)")
+		print("Main \(main)")
+		print("Weather \(weather[0]["icon"])")
+		print("Clouds : \(clouds)")
+		print("Wind : \(wind)")
+		print("Rain : \(rain)")
 		
 		let date = Date(timeIntervalSince1970: time)
-		
-		let formatter = DateFormatter()
-		formatter.locale = Locale(identifier: "fr_FR")
-		formatter.dateFormat = "EEEE d MMM"
-		let strDateFormatted = formatter.string(from: date)
+		let strDateFormatted = self.dateFormatter.string(from: date)
 		
 		cell.titleLabel.text = "City of User"
 		cell.contentLabel.text = "\(weather[0]["description"]!)"
 		cell.updateTimeLabel.text = "\(strDateFormatted)"
 		
-		return cell
+		if let icon = weather[0]["icon"] {
+			let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png")
+			print("\(iconUrl)")
+			cell.weatherIcon.af_setImage(withURL: iconUrl!)
+			
+		}
+		
 	}
 }
