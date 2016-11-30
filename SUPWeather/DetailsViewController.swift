@@ -11,11 +11,11 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 	
-	var datas: WeatherArray = []
-	
+	var weatherObj: WeatherObject!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		print("\(datas)")
+		print("\(weatherObj)")
 	}
 	
 	override func didReceiveMemoryWarning() {

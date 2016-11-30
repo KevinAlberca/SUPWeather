@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-typealias WeatherArray = Array<Dictionary<String, Any>>
+typealias WeatherObject = Dictionary<String, Any>
+typealias WeatherArray = Array<WeatherObject>
 
 class RequestManager {
 	static public let sharedInstance = RequestManager()

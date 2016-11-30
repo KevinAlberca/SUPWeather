@@ -21,6 +21,16 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		return formatter
 	}()
 	
+	//Get object for index row
+	func getWeatherObject(forIndexRow row: Int) -> WeatherObject? {
+		guard let weathers = self.resultWeather,
+			row < weathers.count else {
+			return nil
+		}
+		
+		return self.resultWeather?[row]
+	}
+	
 	
 	// Fetch New Weather
 	func updateWeather(completion: @escaping (Void) -> Void) {
