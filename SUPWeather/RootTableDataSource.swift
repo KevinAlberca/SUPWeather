@@ -24,7 +24,7 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	
 	// Fetch New Weather
 	func updateWeather(completion: @escaping (Void) -> Void) {
-		RequestManager.sharedInstance.fetchWeather(onSuccess: { [weak self] (result) in
+		RequestManager.sharedInstance.fetchWeatherForFiveDays(onSuccess: { [weak self] (result) in
 			self?.resultWeather = result
 			completion()
 		}){ (error) in
@@ -55,22 +55,23 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: [String: Any]) {
+print("\(obj)")
+		
 		guard let main = obj["main"] as? Dictionary<String, Any>,
 			let weather = obj["weather"] as? Array<Dictionary<String, Any>>,
 			let clouds = obj["clouds"] as? Dictionary<String, Any>,
 			let wind = obj["wind"] as? Dictionary<String, Any>,
-			let rain = obj["rain"] as? Dictionary<String, Any>,
 			let time = obj["dt"] as? Double else {
 				print("ERROR Guard : The type of let arn't available")
 				return
 		}
 		
-		print("Data \(obj)")
-		print("Main \(main)")
-		print("Weather \(weather[0]["icon"])")
-		print("Clouds : \(clouds)")
-		print("Wind : \(wind)")
-		print("Rain : \(rain)")
+//		print("Data \(obj)")
+//		print("Main \(main)")
+//		print("Weather \(weather[0]["icon"])")
+//		print("Clouds : \(clouds)")
+//		print("Wind : \(wind)")
+//		print("Rain : \(rain)")
 		
 		let date = Date(timeIntervalSince1970: time)
 		let strDateFormatted = self.dateFormatter.string(from: date)
@@ -81,10 +82,8 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		
 		if let icon = weather[0]["icon"] {
 			let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png")
-			print("\(iconUrl)")
 			cell.weatherIcon.af_setImage(withURL: iconUrl!)
-			
 		}
-		
 	}
+
 }
