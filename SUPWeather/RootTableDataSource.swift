@@ -55,8 +55,6 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: [String: Any]) {
-print("\(obj)")
-		
 		guard let main = obj["main"] as? Dictionary<String, Any>,
 			let weather = obj["weather"] as? Array<Dictionary<String, Any>>,
 			let clouds = obj["clouds"] as? Dictionary<String, Any>,

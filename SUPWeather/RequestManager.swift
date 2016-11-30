@@ -23,7 +23,7 @@ class RequestManager {
 		actualCoordinate = (latitude: "48.8627", longitude: "2.2875")
 	}
 	
-	func fetchWeather(onSuccess success: @escaping (WeatherArray) -> Void, onError error: @escaping (String) -> Void) {
+	func fetchWeatherForFiveDays(onSuccess success: @escaping (WeatherArray) -> Void, onError error: @escaping (String) -> Void) {
 		
 		var strRequest = "\(host)"
 		strRequest += "/forecast?lat=\(actualCoordinate.latitude)&lon=\(actualCoordinate.longitude)&apiKey=\(apiKey)"

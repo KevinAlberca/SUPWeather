@@ -36,4 +36,16 @@ class RootViewController: UITableViewController {
 		self.tableView.reloadData()
 	}
 	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		print("Here")
+		performSegue(withIdentifier: "viewDetailOfWeather", sender: nil)
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if (segue.identifier == "viewDetailOfWeather"){
+			let controller = segue.destination as! DetailsViewController
+			controller.datas = self.weatherDataSource.resultWeather!
+
+		}
+	}
 }

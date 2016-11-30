@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D541E700F5A58B1222155D0 /* Pods_SUPWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B621A257F4E19A7FE5C38B5E /* Pods_SUPWeather.framework */; };
+		DE41B18E1DDF3A5C00B77EAA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41B18D1DDF3A5B00B77EAA /* DetailsViewController.swift */; };
 		DE4CD5FC1DCDCB3800052F81 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CD5FB1DCDCB3800052F81 /* RequestManager.swift */; };
 		DE4CD5FE1DCDCC9800052F81 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CD5FD1DCDCC9800052F81 /* RootViewController.swift */; };
 		DE4CD6031DCDD77C00052F81 /* RootWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4CD6021DCDD77C00052F81 /* RootWeatherCell.swift */; };
@@ -22,6 +23,7 @@
 		B621A257F4E19A7FE5C38B5E /* Pods_SUPWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUPWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF799AA1D87EA1AB94FC8CCF /* Pods-SUPWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUPWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SUPWeather/Pods-SUPWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		C011D99ADAB461B9DA66397E /* Pods-SUPWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUPWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-SUPWeather/Pods-SUPWeather.release.xcconfig"; sourceTree = "<group>"; };
+		DE41B18D1DDF3A5B00B77EAA /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		DE4CD5FB1DCDCB3800052F81 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		DE4CD5FD1DCDCC9800052F81 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		DE4CD6021DCDD77C00052F81 /* RootWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWeatherCell.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 				C011D99ADAB461B9DA66397E /* Pods-SUPWeather.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE41B18C1DDF3A4500B77EAA /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DE41B18D1DDF3A5B00B77EAA /* DetailsViewController.swift */,
+			);
+			name = Details;
 			sourceTree = "<group>";
 		};
 		DE4CD5FA1DCDCB2000052F81 /* Manager */ = {
@@ -106,6 +116,7 @@
 		DE9E3F661DCB38DD00A1B370 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DE41B18C1DDF3A4500B77EAA /* Details */,
 				DEC02A131DDB60F9007A4F75 /* Root */,
 			);
 			name = Scene;
@@ -266,6 +277,7 @@
 				DE4CD5FE1DCDCC9800052F81 /* RootViewController.swift in Sources */,
 				DE4CD5FC1DCDCB3800052F81 /* RequestManager.swift in Sources */,
 				DE4CD6031DCDD77C00052F81 /* RootWeatherCell.swift in Sources */,
+				DE41B18E1DDF3A5C00B77EAA /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +321,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -359,6 +372,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -388,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF799AA1D87EA1AB94FC8CCF /* Pods-SUPWeather.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62P8QDG3MT;
 				INFOPLIST_FILE = SUPWeather/Info.plist;
@@ -404,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C011D99ADAB461B9DA66397E /* Pods-SUPWeather.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62P8QDG3MT;
 				INFOPLIST_FILE = SUPWeather/Info.plist;
