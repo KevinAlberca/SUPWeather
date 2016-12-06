@@ -75,7 +75,7 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		}
 		
 //		print("Data \(obj)")
-//		print("Main \(main)")
+//		print("Main :\(main)")
 //		print("Weather \(weather[0]["icon"])")
 //		print("Clouds : \(clouds)")
 //		print("Wind : \(wind)")
@@ -84,9 +84,12 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		let date = Date(timeIntervalSince1970: time)
 		let strDateFormatted = self.dateFormatter.string(from: date)
 		
-		cell.titleLabel.text = "City of User"
+		cell.titleLabel.text = "\(strDateFormatted)"
 		cell.contentLabel.text = "\(weather[0]["description"]!)"
-		cell.updateTimeLabel.text = "\(strDateFormatted)"
+		cell.tempMinLabel.text = "\(main["temp_min"]!) ºC"
+		cell.tempMaxLabel.text = "\(main["temp_max"]!) ºC"
+		
+		
 		
 		if let icon = weather[0]["icon"] {
 			let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png")

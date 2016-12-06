@@ -49,6 +49,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vj0-1I-U9y">
+                                            <rect key="frame" x="234" y="20" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="5tq-xd-oGv" secondAttribute="trailing" id="6ZG-SR-awu"/>
@@ -64,8 +71,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contentLabel" destination="kcz-tp-kci" id="MWI-Ip-9Sf"/>
+                                    <outlet property="tempMaxLabel" destination="dia-S5-mmj" id="n4H-Wo-qRS"/>
+                                    <outlet property="tempMinLabel" destination="Vj0-1I-U9y" id="EcR-Mp-hgP"/>
                                     <outlet property="titleLabel" destination="vVU-2E-nzn" id="xJE-sT-rEc"/>
-                                    <outlet property="updateTimeLabel" destination="dia-S5-mmj" id="y00-Rb-Swk"/>
                                     <outlet property="weatherIcon" destination="5tq-xd-oGv" id="z14-6v-hnb"/>
                                     <segue destination="DX9-4L-WMr" kind="show" identifier="viewDetailOfWeatherSegue" id="17O-Rd-WV5"/>
                                 </connections>

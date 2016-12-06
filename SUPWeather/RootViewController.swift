@@ -36,7 +36,7 @@ class RootViewController: UITableViewController {
 		self.tableView.reloadData()
 	}
 	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //		// Get Weather informations
 //		guard let weatherObj = self.weatherDataSource.getWeatherObject(forIndexRow: indexPath.row) else { /* Return alert here */ return }
 //		
@@ -50,7 +50,7 @@ class RootViewController: UITableViewController {
 //		// Send data to new controller
 //		self.navigationController?.pushViewController(detailViewController, animated: true)
 //		self.performSegue(withIdentifier: "viewDetailOfWeatherSegue", sender: nil)
-	}
+//	}
 	
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

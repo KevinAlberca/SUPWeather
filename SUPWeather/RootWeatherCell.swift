@@ -15,8 +15,8 @@ class RootWeatherCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var contentLabel: UILabel!
-
-	@IBOutlet weak var updateTimeLabel: UILabel!
+	@IBOutlet weak var tempMinLabel: UILabel!
+	@IBOutlet weak var tempMaxLabel: UILabel!
 	@IBOutlet weak var weatherIcon: UIImageView!
 	
 }
