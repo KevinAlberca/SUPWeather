@@ -27,7 +27,7 @@ class RequestManager {
 	func fetchWeatherForFiveDays(onSuccess success: @escaping (WeatherArray) -> Void, onError error: @escaping (String) -> Void) {
 		
 		var strRequest = "\(host)"
-		strRequest += "/forecast?lat=\(actualCoordinate.latitude)&lon=\(actualCoordinate.longitude)&apiKey=\(apiKey)"
+		strRequest += "/forecast?lat=\(actualCoordinate.latitude)&lon=\(actualCoordinate.longitude)&units=metric&apiKey=\(apiKey)"
 		
 		print("\(strRequest)")
 		
