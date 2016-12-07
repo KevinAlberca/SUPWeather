@@ -16,7 +16,7 @@ import AlamofireObjectMapper
 class RequestManager {
 	static public let sharedInstance = RequestManager()
 	
-	private let host = "http://api.openweathermap.org/data/2.5"
+	private let host = "https://api.darksky.net/forecast/"
 	private let apiKey = ""
 	
 	public var actualCoordinate: (latitude: String, longitude: String)
@@ -27,8 +27,8 @@ class RequestManager {
 	
 	func fetchWeatherForFiveDays(onSuccess success: @escaping ([Weather]) -> Void, onError error: @escaping (String) -> Void) {
 		
-		var strRequest = "\(host)"
-		strRequest += "/forecast?lat=\(actualCoordinate.latitude)&lon=\(actualCoordinate.longitude)&units=metric&apiKey=\(apiKey)"
+		var strRequest = "\(host)\(apiKey)"
+		strRequest += "/\(actualCoordinate.latitude),\(actualCoordinate.longitude)"
 		
 		Alamofire.request(strRequest).responseArray(keyPath: "list") { (response: DataResponse<[Weather]>) in
 			guard let weathers = response.result.value else {
@@ -38,24 +38,5 @@ class RequestManager {
 			success(weathers)
 		}
 
-//		Alamofire.request(strRequest).responseJSON { response in
-//			//			print(response.request!)  // original URL request
-//			//			print(response.response!) // HTTP URL response
-//			//			print(response.data!)     // server data
-//			print(response.result)   // result of response serialization
-//			
-//			
-//			guard let JSON = response.result.value as? Dictionary<String, Any> else {
-//				error("Request Manager -> No data when fetching \(strRequest)")
-//				return
-//			}
-//			
-//			guard let data = JSON["list"] as? Array<Dictionary<String, Any>> else {
-//				error("Request Manager JSON Parsing error")
-//				return
-//			}
-//			
-//			success(data)
-//		}
 	}
 }
