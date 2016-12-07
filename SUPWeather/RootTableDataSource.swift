@@ -83,6 +83,34 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		cell.tempMinLabel.text = "\(tempMin) ºC"
 		cell.tempMaxLabel.text = "\(tempMax) ºC"
 
+		print("\(icon)")
+		let iconUrlString = getIconUrl(iconName: icon)
+		
+		if let iconUrl = URL(string: iconUrlString) {
+			cell.weatherIcon.af_setImage(withURL: iconUrl)
+		}
+	}
+	
+	func getIconUrl(iconName: String) -> String {
+		
+		var iconNamesDict: [String:String] = [
+			"clear-day": "01d",
+			"clear-night": "01n",
+			"partly-cloudy-day": "02d",
+			"partly-cloudy-night": "02n",
+			"cloudy": "03d", // Nuageux
+			"rain": "10d", // Pluie
+			"sleet": "13d", // Neige fondue -> Neige
+			"snow": "13d", // Neige
+			"fog": "03d", // Brouillard
+			"wind": "50d"
+		]
+		
+		var iconUrl = "http://openweathermap.org/img/w/"
+		iconUrl += iconNamesDict[iconName]!
+		iconUrl += ".png"
+		
+		return iconUrl
 	}
 
 }
