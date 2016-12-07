@@ -65,16 +65,15 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: Weather) {
+		
 		guard let time = obj.time as? Int,
 			let icon = obj.iconName as? String,
 			let description = obj.description as? String,
-			let temp = obj.temperature as? Double,
 			let tempMin = obj.temperatureMin as? Double,
 			let tempMax = obj.temperatureMax as? Double else {
 				print("ERROR Guard : The type of let arn't available")
 				return
 		}
-		
 		
 		let date = Date(timeIntervalSince1970: TimeInterval(time))
 		let strDateFormatted = self.dateFormatter.string(from: date)
@@ -84,9 +83,6 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		cell.tempMinLabel.text = "\(tempMin) ºC"
 		cell.tempMaxLabel.text = "\(tempMax) ºC"
 
-		if let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png") {
-			cell.weatherIcon.af_setImage(withURL: iconUrl)
-		}
 	}
 
 }

@@ -28,9 +28,10 @@ class RequestManager {
 	func fetchWeatherForFiveDays(onSuccess success: @escaping ([Weather]) -> Void, onError error: @escaping (String) -> Void) {
 		
 		var strRequest = "\(host)\(apiKey)"
-		strRequest += "/\(actualCoordinate.latitude),\(actualCoordinate.longitude)"
+		strRequest += "/\(actualCoordinate.latitude),\(actualCoordinate.longitude)?units=auto&lang=fr&exclude=flags"
 		
-		Alamofire.request(strRequest).responseArray(keyPath: "list") { (response: DataResponse<[Weather]>) in
+		Alamofire.request(strRequest).responseArray(keyPath: "daily.data") { (response: DataResponse<[Weather]>) in
+			
 			guard let weathers = response.result.value else {
 				error("Request Manager -> No data when fetching \(strRequest)")
 				return
@@ -39,4 +40,5 @@ class RequestManager {
 		}
 
 	}
+
 }
