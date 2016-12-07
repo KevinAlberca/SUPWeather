@@ -8,14 +8,20 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
 
 class DetailsViewController: UIViewController {
 	
-	var weatherObj: WeatherObject!
+	@IBOutlet weak var weatherIV: UIImageView!
+	var weatherObj: [Weather]!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		print("\(weatherObj)")
+//		print("\(weatherObj["weather"][0])")
+//		if let icon = weatherObj["weather"][0]["icon"] {
+//			let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png")
+//			self.weatherIV.af_setImage(withURL: iconUrl!)
+//		}
 	}
 	
 	override func didReceiveMemoryWarning() {

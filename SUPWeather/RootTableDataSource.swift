@@ -12,7 +12,7 @@ import AlamofireImage
 
 class RootTableDataSource: NSObject, UITableViewDataSource {
 	
-	var resultWeather: WeatherArray?
+	var resultWeather: [Weather]?
 	
 	lazy var dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
@@ -22,7 +22,7 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	}()
 	
 	//Get object for index row
-	func getWeatherObject(forIndexRow row: Int) -> WeatherObject? {
+	func getWeatherObject(forIndexRow row: Int) -> Weather? {
 		guard let weathers = self.resultWeather,
 			row < weathers.count else {
 			return nil
@@ -64,36 +64,28 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		return cell
 	}
 	
-	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: [String: Any]) {
-		guard let main = obj["main"] as? Dictionary<String, Any>,
-			let weather = obj["weather"] as? Array<Dictionary<String, Any>>,
-			let clouds = obj["clouds"] as? Dictionary<String, Any>,
-			let wind = obj["wind"] as? Dictionary<String, Any>,
-			let time = obj["dt"] as? Double else {
+	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: Weather) {
+		guard let time = obj.time as? Int,
+			let icon = obj.iconName as? String,
+			let description = obj.description as? String,
+			let temp = obj.temperature as? Double,
+			let tempMin = obj.temperatureMin as? Double,
+			let tempMax = obj.temperatureMax as? Double else {
 				print("ERROR Guard : The type of let arn't available")
 				return
 		}
 		
-//		print("Data \(obj)")
-//		print("Main :\(main)")
-//		print("Weather \(weather[0]["icon"])")
-//		print("Clouds : \(clouds)")
-//		print("Wind : \(wind)")
-//		print("Rain : \(rain)")
 		
-		let date = Date(timeIntervalSince1970: time)
+		let date = Date(timeIntervalSince1970: TimeInterval(time))
 		let strDateFormatted = self.dateFormatter.string(from: date)
-		
+
 		cell.titleLabel.text = "\(strDateFormatted)"
-		cell.contentLabel.text = "\(weather[0]["description"]!)"
-		cell.tempMinLabel.text = "\(main["temp_min"]!) ºC"
-		cell.tempMaxLabel.text = "\(main["temp_max"]!) ºC"
-		
-		
-		
-		if let icon = weather[0]["icon"] {
-			let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png")
-			cell.weatherIcon.af_setImage(withURL: iconUrl!)
+		cell.contentLabel.text = "\(description)"
+		cell.tempMinLabel.text = "\(tempMin) ºC"
+		cell.tempMaxLabel.text = "\(tempMax) ºC"
+
+		if let iconUrl = URL(string: "http://openweathermap.org/img/w/\(icon).png") {
+			cell.weatherIcon.af_setImage(withURL: iconUrl)
 		}
 	}
 

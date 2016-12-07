@@ -7,4 +7,5 @@ target 'SUPWeather' do
   # Pods for SUPWeather
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage', '~> 3.0'
+  pod 'AlamofireObjectMapper', '~> 4.0'
 end

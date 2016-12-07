@@ -8,9 +8,10 @@
 //
 import Foundation
 import Alamofire
+import AlamofireObjectMapper
 
-typealias WeatherObject = Dictionary<String, Any>
-typealias WeatherArray = Array<WeatherObject>
+//typealias WeatherObject = Dictionary<String, Any>
+//typealias WeatherArray = Array<WeatherObject>
 
 class RequestManager {
 	static public let sharedInstance = RequestManager()
@@ -24,31 +25,37 @@ class RequestManager {
 		actualCoordinate = (latitude: "48.8627", longitude: "2.2875")
 	}
 	
-	func fetchWeatherForFiveDays(onSuccess success: @escaping (WeatherArray) -> Void, onError error: @escaping (String) -> Void) {
+	func fetchWeatherForFiveDays(onSuccess success: @escaping ([Weather]) -> Void, onError error: @escaping (String) -> Void) {
 		
 		var strRequest = "\(host)"
 		strRequest += "/forecast?lat=\(actualCoordinate.latitude)&lon=\(actualCoordinate.longitude)&units=metric&apiKey=\(apiKey)"
 		
-		print("\(strRequest)")
-		
-		Alamofire.request(strRequest).responseJSON { response in
-			//			print(response.request!)  // original URL request
-			//			print(response.response!) // HTTP URL response
-			//			print(response.data!)     // server data
-			print(response.result)   // result of response serialization
-			
-			
-			guard let JSON = response.result.value as? Dictionary<String, Any> else {
+		Alamofire.request(strRequest).responseArray(keyPath: "list") { (response: DataResponse<[Weather]>) in
+			guard let weathers = response.result.value else {
 				error("Request Manager -> No data when fetching \(strRequest)")
 				return
 			}
-			
-			guard let data = JSON["list"] as? Array<Dictionary<String, Any>> else {
-				error("Request Manager JSON Parsing error")
-				return
-			}
-			
-			success(data)
+			success(weathers)
 		}
+
+//		Alamofire.request(strRequest).responseJSON { response in
+//			//			print(response.request!)  // original URL request
+//			//			print(response.response!) // HTTP URL response
+//			//			print(response.data!)     // server data
+//			print(response.result)   // result of response serialization
+//			
+//			
+//			guard let JSON = response.result.value as? Dictionary<String, Any> else {
+//				error("Request Manager -> No data when fetching \(strRequest)")
+//				return
+//			}
+//			
+//			guard let data = JSON["list"] as? Array<Dictionary<String, Any>> else {
+//				error("Request Manager JSON Parsing error")
+//				return
+//			}
+//			
+//			success(data)
+//		}
 	}
 }

@@ -60,7 +60,7 @@ class RootViewController: UITableViewController {
 			
 			guard let detailViewController = segue.destination as? DetailsViewController else { return }
 			
-			detailViewController.weatherObj = weatherObj
+			detailViewController.weatherObj = [weatherObj]
 		}
 	}
 	
