@@ -24,6 +24,7 @@ class RootViewController: UITableViewController {
 		self.weatherDataSource.updateWeather { [weak self] _ in
 			self?.reload()
 		}
+		
 	}
 	
 	override func didReceiveMemoryWarning() {
