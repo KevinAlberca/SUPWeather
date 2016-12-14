@@ -96,17 +96,8 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="199"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rOR-xP-2VD" customClass="DetailsTableViewController">
-                                <rect key="frame" x="0.0" y="262" width="414" height="474"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="rOR-xP-2VD" secondAttribute="trailing" id="DU5-CH-43Z"/>
-                            <constraint firstItem="jko-bC-c9W" firstAttribute="top" secondItem="rOR-xP-2VD" secondAttribute="bottom" id="lak-5b-TnI"/>
-                            <constraint firstItem="rOR-xP-2VD" firstAttribute="leading" secondItem="ANI-U7-CZ6" secondAttribute="leading" id="xIy-lF-3Jo"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="weatherIV" destination="Drz-zP-9Yx" id="Af1-3H-eat"/>
