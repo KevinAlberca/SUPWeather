@@ -66,7 +66,7 @@
                                     <outlet property="tempMinLabel" destination="Vj0-1I-U9y" id="EcR-Mp-hgP"/>
                                     <outlet property="titleLabel" destination="vVU-2E-nzn" id="xJE-sT-rEc"/>
                                     <outlet property="weatherIcon" destination="5tq-xd-oGv" id="z14-6v-hnb"/>
-                                    <segue destination="DX9-4L-WMr" kind="show" identifier="viewDetailOfWeatherSegue" id="17O-Rd-WV5"/>
+                                    <segue destination="4SO-hQ-iZb" kind="show" identifier="viewDetailOfWeatherSegue" id="WSy-cJ-e3N"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -81,31 +81,39 @@
             <point key="canvasLocation" x="418" y="44"/>
         </scene>
         <!--Details View Controller-->
-        <scene sceneID="eMe-VC-7be">
+        <scene sceneID="4sx-vK-Xnz">
             <objects>
-                <viewController storyboardIdentifier="DetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DX9-4L-WMr" customClass="DetailsViewController" customModule="SUPWeather" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vzZ-2P-gby"/>
-                        <viewControllerLayoutGuide type="bottom" id="jko-bC-c9W"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ANI-U7-CZ6">
+                <tableViewController id="4SO-hQ-iZb" customClass="DetailsViewController" customModule="SUPWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0NI-fh-Kg4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Drz-zP-9Yx">
-                                <rect key="frame" x="0.0" y="64" width="414" height="199"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="gLT-4W-too">
+                            <rect key="frame" x="0.0" y="64" width="414" height="199"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OjQ-l8-g6q">
+                                <rect key="frame" x="0.0" y="227" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjQ-l8-g6q" id="fwg-9H-ppv">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4SO-hQ-iZb" id="f6z-HP-dvV"/>
+                            <outlet property="delegate" destination="4SO-hQ-iZb" id="m5d-Xa-wmL"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="weatherIV" destination="Drz-zP-9Yx" id="Af1-3H-eat"/>
+                        <outlet property="weatherIV" destination="gLT-4W-too" id="AKb-V4-6HC"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NEu-SJ-BUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A3O-rn-IpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1205.7971014492755" y="42.391304347826093"/>
+            <point key="canvasLocation" x="1116" y="43"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gk8-vd-vmd">
@@ -121,7 +129,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2b-UU-Q4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-406" y="47"/>
+            <point key="canvasLocation" x="-407" y="42"/>
         </scene>
     </scenes>
 </document>

@@ -10,11 +10,10 @@ import Foundation
 import UIKit
 import AlamofireImage
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UITableViewController {
 	
 	@IBOutlet weak var weatherIV: UIImageView!
 	var weatherIcon: String?
-//	let detailTableVC = DetailsTableViewController()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
