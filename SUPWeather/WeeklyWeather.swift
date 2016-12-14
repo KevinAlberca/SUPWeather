@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class Weather: Mappable {
+class WeeklyWeather: Mappable {
 	var time: Int!
 	var description: String = ""
 	var iconName: String = "icon-default"

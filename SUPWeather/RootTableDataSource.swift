@@ -12,7 +12,7 @@ import AlamofireImage
 
 class RootTableDataSource: NSObject, UITableViewDataSource {
 	
-	var resultWeather: [Weather]?
+	var resultWeather: [WeeklyWeather]?
 	
 	lazy var dateFormatter: DateFormatter = {
 		let formatter = DateFormatter()
@@ -22,7 +22,7 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	}()
 	
 	//Get object for index row
-	func getWeatherObject(forIndexRow row: Int) -> Weather? {
+	func getWeatherObject(forIndexRow row: Int) -> WeeklyWeather? {
 		guard let weathers = self.resultWeather,
 			row < weathers.count else {
 			return nil
@@ -64,7 +64,7 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		return cell
 	}
 	
-	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: Weather) {
+	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: WeeklyWeather) {
 		
 		guard let time = obj.time as? Int,
 			let icon = obj.iconName as? String,
@@ -83,15 +83,14 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 		cell.tempMinLabel.text = "\(tempMin) ºC"
 		cell.tempMaxLabel.text = "\(tempMax) ºC"
 
-		print("\(icon)")
-		let iconUrlString = getIconUrl(iconName: icon)
+		let iconUrlString = RootTableDataSource.getIconUrl(iconName: icon)
 		
 		if let iconUrl = URL(string: iconUrlString) {
 			cell.weatherIcon.af_setImage(withURL: iconUrl)
 		}
 	}
 	
-	func getIconUrl(iconName: String) -> String {
+	static func getIconUrl(iconName: String) -> String {
 		
 		var iconNamesDict: [String:String] = [
 			"clear-day": "01d",

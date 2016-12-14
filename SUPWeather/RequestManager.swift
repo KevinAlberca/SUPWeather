@@ -22,12 +22,12 @@ class RequestManager {
 		actualCoordinate = (latitude: "48.8627", longitude: "2.2875")
 	}
 	
-	func fetchWeatherForFiveDays(onSuccess success: @escaping ([Weather]) -> Void, onError error: @escaping (String) -> Void) {
+	func fetchWeatherForFiveDays(onSuccess success: @escaping ([WeeklyWeather]) -> Void, onError error: @escaping (String) -> Void) {
 		
 		var strRequest = "\(host)\(apiKey)"
 		strRequest += "/\(actualCoordinate.latitude),\(actualCoordinate.longitude)?units=auto&lang=fr&exclude=flags"
 		
-		Alamofire.request(strRequest).responseArray(keyPath: "daily.data") { (response: DataResponse<[Weather]>) in
+		Alamofire.request(strRequest).responseArray(keyPath: "daily.data") { (response: DataResponse<[WeeklyWeather]>) in
 			
 			guard let weathers = response.result.value else {
 				error("Request Manager -> No data when fetching \(strRequest)")
@@ -37,4 +37,21 @@ class RequestManager {
 		}
 
 	}
+	
+	func fetchWeatherForDay(onSuccess success: @escaping ([DailyWeather]) -> Void, onError error: @escaping (String) -> Void) {
+		
+		var strRequest = "\(host)\(apiKey)"
+		strRequest += "/\(actualCoordinate.latitude),\(actualCoordinate.longitude)?units=auto&lang=fr&exclude=flags"
+		
+		Alamofire.request(strRequest).responseArray(keyPath: "hourly.data") { (response: DataResponse<[DailyWeather]>) in
+			
+			guard let weathers = response.result.value else {
+				error("Request Manager -> No data when fetching \(strRequest)")
+				return
+			}
+			success(weathers)
+		}
+		
+	}
+	
 }
