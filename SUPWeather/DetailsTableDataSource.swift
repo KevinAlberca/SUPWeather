@@ -54,6 +54,22 @@ class DetailsTableDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func configure(tableViewCell cell: DetailsWeatherCell, withObjectWeather obj: DailyWeather) {
-		print("Line 66")
+		guard let time = Date(timeIntervalSince1970: TimeInterval(obj.time)) as? Date,
+			let description = obj.description as? String,
+			let temperature = obj.temperature as? Double,
+			let iconName = obj.iconName as? String else {
+				print("Guard error : Data isn't valid type")
+				return
+		}
+		
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "fr_FR")
+		formatter.dateFormat = "HH"
+		let hour = formatter.string(from: time)
+		
+		cell.hourLabel.text = "\(hour)H"
+		cell.temperatureLabel.text = "\(temperature)ºC"
+		cell.descriptionLabel.text = "\(description)"
+		
 	}
 }
