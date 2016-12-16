@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
 
 class DetailsTableDataSource: NSObject, UITableViewDataSource {
 	var dailyWeather: [DailyWeather]?
@@ -54,13 +55,10 @@ class DetailsTableDataSource: NSObject, UITableViewDataSource {
 	}
 	
 	func configure(tableViewCell cell: DetailsWeatherCell, withObjectWeather obj: DailyWeather) {
-		guard let time = Date(timeIntervalSince1970: TimeInterval(obj.time)) as? Date,
-			let description = obj.description as? String,
-			let temperature = obj.temperature as? Double,
-			let iconName = obj.iconName as? String else {
-				print("Guard error : Data isn't valid type")
-				return
-		}
+		let time = Date(timeIntervalSince1970: TimeInterval(obj.time))
+		let description = obj.description
+		let temperature = obj.temperature
+		let iconName = obj.iconName
 		
 		let formatter = DateFormatter()
 		formatter.locale = Locale(identifier: "fr_FR")
@@ -70,6 +68,10 @@ class DetailsTableDataSource: NSObject, UITableViewDataSource {
 		cell.hourLabel.text = "\(hour)H"
 		cell.temperatureLabel.text = "\(temperature)ºC"
 		cell.descriptionLabel.text = "\(description)"
+		
+		if let iconUrl = URL(string: RootTableDataSource.getIconUrl(iconName: iconName)) {
+			cell.weatherIcon.af_setImage(withURL: iconUrl)
+		}
 		
 	}
 }

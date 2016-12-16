@@ -66,22 +66,19 @@ class RootTableDataSource: NSObject, UITableViewDataSource {
 	
 	func configure(tableViewCell cell: RootWeatherCell, withObjectWeather obj: WeeklyWeather) {
 		
-		guard let time = obj.time as? Int,
-			let icon = obj.iconName as? String,
-			let description = obj.description as? String,
-			let tempMin = obj.temperatureMin as? Double,
-			let tempMax = obj.temperatureMax as? Double else {
-				print("ERROR Guard : The type of let arn't available")
-				return
-		}
+		let time = obj.time as Int
+		let icon = obj.iconName as String
+		let description = obj.description as String
+		let tempMin = obj.temperatureMin as Double
+		let tempMax = obj.temperatureMax as Double
 		
 		let date = Date(timeIntervalSince1970: TimeInterval(time))
 		let strDateFormatted = self.dateFormatter.string(from: date)
 
 		cell.titleLabel.text = "\(strDateFormatted)"
 		cell.contentLabel.text = "\(description)"
-		cell.tempMinLabel.text = "\(tempMin) ºC"
-		cell.tempMaxLabel.text = "\(tempMax) ºC"
+		cell.tempMinLabel.text = "MIN : \(tempMin) ºC"
+		cell.tempMaxLabel.text = "MAX : \(tempMax) ºC"
 
 		let iconUrlString = RootTableDataSource.getIconUrl(iconName: icon)
 		
